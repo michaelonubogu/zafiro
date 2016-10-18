@@ -1,0 +1,29 @@
+{
+  "name": "zafiro",
+  "version": "0.0.1",
+  "description": "Strongly typed functional programming utilities & algebraic data structures",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remojansen/zafiro.git"
+  },
+  "keywords": [
+    "typescript",
+    "strongly",
+    "typed",
+    "functional",
+    "programming",
+    "algebraic",
+    "data",
+    "structures"
+  ],
+  "author": "Remo H. Jansen <remo.jansen@wolksoftware.com> (http://www.remojansen.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/remojansen/zafiro/issues"
+  },
+  "homepage": "https://github.com/remojansen/zafiro#readme"
+}
