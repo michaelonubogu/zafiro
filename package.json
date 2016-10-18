@@ -2,7 +2,9 @@
   "name": "zafiro",
   "version": "0.0.1",
   "description": "Strongly typed functional programming utilities & algebraic data structures",
-  "main": "lib/index.js",
+  "main": "lib/inversify.js",
+  "jsnext:main": "es/inversify.js",
+  "typings": "./dts/inversify.d.ts",
   "scripts": {
     "test": "gulp"
   },

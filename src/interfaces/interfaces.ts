@@ -16,7 +16,10 @@ namespace interfaces {
     }
 
     export interface Either<TLeft, TRight> {
-        // 
+        isLeft: boolean;
+        isRight: boolean;
+        getLeft(): TLeft;
+        getRight(): TRight;
     }
 
 }

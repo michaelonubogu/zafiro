@@ -1,7 +1,10 @@
 import interfaces from "../interfaces/interfaces";
 
 class Nothing implements interfaces.Nothing {
-    public isNothing = true;
+    public readonly isNothing: boolean;
+    public constructor() {
+         this.isNothing = true;
+    }
 }
 
 export default Nothing;

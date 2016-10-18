@@ -1,5 +1,6 @@
 import interfaces from "../interfaces/interfaces";
 declare class Nothing implements interfaces.Nothing {
-    isNothing: boolean;
+    readonly isNothing: boolean;
+    constructor();
 }
 export default Nothing;

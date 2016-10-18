@@ -12,6 +12,10 @@ declare namespace interfaces {
         nothing: Nothing;
     }
     interface Either<TLeft, TRight> {
+        isLeft: boolean;
+        isRight: boolean;
+        getLeft(): TLeft;
+        getRight(): TRight;
     }
 }
 export default interfaces;
