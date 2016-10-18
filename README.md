@@ -1,3 +1,3 @@
-<img width="400" src="assets/logo.png" />
+<img width="550" src="assets/logo.png" />
 ---------
 ?
