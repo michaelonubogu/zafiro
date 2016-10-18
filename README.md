@@ -1,5 +1,7 @@
 <img width="400" src="assets/logo.png" />
 
+
+[![npm version](https://badge.fury.io/js/zafiro.svg)](http://badge.fury.io/js/zafiro)
 [![Build Status](https://secure.travis-ci.org/remojansen/zafiro.svg?branch=master)](https://travis-ci.org/remojansen/zafiro)
 
 # Strongly typed functional programming utilities & algebraic data structures
