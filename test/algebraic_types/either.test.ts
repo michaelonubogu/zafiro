@@ -30,12 +30,13 @@ describe("Either", () => {
     it("Should allow use either value", () => {
 
         interface User {
+            city: string;
             name: string;
         }
 
         let users = [
-            { name: "John" },
-            { name: "Cortana" }
+            { city: "Dublin", name: "John" },
+            { city: "Belfast", name: "Dolores" }
         ];
 
         function fetchUsersSuccess() {
