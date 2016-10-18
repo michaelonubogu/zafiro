@@ -7,3 +7,5 @@
 # Strongly typed functional programming utilities & algebraic data structures
 
 :warning: :construction: WORK IN PROGRESS :construction: :warning:
+
+I'm working on this project as a learning exercise. Please don't expect it to become a real thing...
