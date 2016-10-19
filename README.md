@@ -14,14 +14,11 @@
 [![NPM](https://nodei.co/npm/zafiro.png?downloads=true&downloadRank=true)](https://nodei.co/npm/zafiro/)
 [![NPM](https://nodei.co/npm-dl/zafiro.png?months=9&height=3)](https://nodei.co/npm/zafiro/)
 
-:warning: :construction: WORK IN PROGRESS :construction: :warning:
-
-I'm working on this project as a learning exercise.
-Please don't expect it to become a real thing...
+:construction: WORK IN PROGRESS :construction:
 
 ## Installation
 
-:warning: **IMPORTANT** :warning: Zafiro requires TypeScript 2.0 with `strictNullChecks` mode enabled.
+:warning: PLEASE NOTE: Zafiro requires TypeScript 2.0 with `strictNullChecks` mode enabled.
 
 You can install Zafiro using npm:
 
