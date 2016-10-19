@@ -122,6 +122,12 @@ a null check if we try to access the left or right values directly:
 eitherErrorOrUserArray.right.value.map((u) => u.city); // Object is possibly 'null' or 'undefined'.
 ```
 
+## Strongly typed immutable data types
+TODO
+
+## Strongly typed FP utils
+TODO
+
 ## Acknowledgements
 This project would not be possible without the amazing work
 acomplished by the following OSS projects:
