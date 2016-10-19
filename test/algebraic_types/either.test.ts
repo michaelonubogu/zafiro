@@ -5,25 +5,25 @@ describe("Either", () => {
 
     it("Should provide left factory", () => {
         let either = Either.Left<Error, number>(new Error());
-        expect(either.isLeft).to.eql(true);
-        expect(either.isRight).to.eql(false);
+        expect(Either.isLeft(either)).to.eql(true);
+        expect(Either.isRight(either)).to.eql(false);
     });
 
     it("Should provide right factory", () => {
         let either = Either.Right<Error, number>(5);
-        expect(either.isLeft).to.eql(false);
-        expect(either.isRight).to.eql(true);
+        expect(Either.isLeft(either)).to.eql(false);
+        expect(Either.isRight(either)).to.eql(true);
     });
 
     it("Should allow to create instances", () => {
 
         let eitherLeft = new Either<Error, number>(new Error("Test!"), null);
-        expect(eitherLeft.isLeft).to.eql(true);
-        expect(eitherLeft.isRight).to.eql(false);
+        expect(Either.isLeft(eitherLeft)).to.eql(true);
+        expect(Either.isRight(eitherLeft)).to.eql(false);
 
         let eitherRight = new Either<Error, number>(null, 5);
-        expect(eitherRight.isLeft).to.eql(false);
-        expect(eitherRight.isRight).to.eql(true);
+        expect(Either.isLeft(eitherRight)).to.eql(false);
+        expect(Either.isRight(eitherRight)).to.eql(true);
 
     });
 
@@ -39,21 +39,23 @@ describe("Either", () => {
             { city: "Belfast", name: "Dolores" }
         ];
 
-        function fetchUsersSuccess() {
-            return Either.Right<Error, User[]>(users);
-        }
-
-        expect(fetchUsersSuccess().isRight).to.eql(true);
-        expect(fetchUsersSuccess().getRight()).to.eqls(users);
-
         let e = new Error("Timeout!");
 
-        function fetchUsersError() {
-            return Either.Left<Error, User[]>(e);
+        function fetchUsers(shouldFail: boolean) {
+            if (shouldFail) {
+                return Either.Left<Error, User[]>(e);
+            } else {
+                return Either.Right<Error, User[]>(users);
+            }
         }
 
-        expect(fetchUsersError().isRight).to.eql(false);
-        expect(fetchUsersError().getLeft().message ).to.eql(e.message);
+        let eitherRight = fetchUsers(false);
+        expect(Either.isRight(eitherRight)).to.eql(true);
+        expect(eitherRight.getRightOrElse([])).to.eqls(users);
+
+        let eitherLeft = fetchUsers(true);
+        expect(Either.isLeft(eitherLeft)).to.eql(true);
+        expect(eitherLeft.getLeftOrElse(new Error())).to.eqls(e);
 
     });
 

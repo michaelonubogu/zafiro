@@ -1,5 +1,7 @@
 <img width="400" src="assets/logo.png" />
+
 ### Stringly typed algebraic data types, immutable data structures and other functional programming utilitites powered by TypeScript
+
 [![npm version](https://badge.fury.io/js/zafiro.svg)](http://badge.fury.io/js/zafiro)
 [![Build Status](https://secure.travis-ci.org/remojansen/zafiro.svg?branch=master)](https://travis-ci.org/remojansen/zafiro)
 [![Build status](https://ci.appveyor.com/api/projects/status/5kbh6wgi9rg7v6pr?svg=true)](https://ci.appveyor.com/project/remojansen/zafiro)
@@ -17,23 +19,18 @@
 I'm working on this project as a learning exercise.
 Please don't expect it to become a real thing...
 
+## Installation
+You can install Zafiro using npm:
+
+```
+$ npm install --save zafiro
+```
+
+The type definitions are included in the npm module.
+
+**:warning: Zafiro requires TypeScript 2.0 with `--strictNullChecks` :warning:**
+
 ## Strongly typed algebraic data types
-
-### Nothing
-The type `Nothing` represents the absence of some type.
-
-```ts
-let nothing = new Nothing();
-console.log(nothing.isNothing); // true
-```
-
-### Just<T>
-The Just type represents the existence of some type.
-
-```ts
-let justANumber = new Just<number>(5);
-console.log(justANumber.value); // 5
-```
 
 ### Maybe<T>
 The Maybe type represents the possibility of some value or
@@ -45,40 +42,38 @@ potential absence of a value, helping to avoid the
 existence of null pointer exceptions.
 
 ```ts
-import { interfaces, filter, Either } from "zafiro";
-
 interface User {
     city: string;
     name: string;
 }
 
-type callback = (response: interfaces.Maybe<User[]>) => void
+let users = [
+    { city: "Dublin", name: "John" },
+    { city: "Belfast", name: "Dolores" }
+];
 
-function fetchUsers(cb: callback) {
-    $.ajax({
-        type: "GET",
-        url: "/get/users/",
-        success: (data: User[]) => {
-            callback(
-                new Maybe<User[]>(data); // just!
-            );
-        },
-        error: function(jqXHR, textStatus, errorThrown) => {
-            callback(
-                new Maybe<User[]>(); // nothing!
-            );
-        }
-    });
+function fetchUsers(shouldFail: boolean) {
+    if (shouldFail) {
+        return Maybe.Nothing<User[]>();
+    } else {
+        return Maybe.Just<User[]>(users);
+    }
 }
 
-let isFrom = (city: string) => (user: User): boolean => user.city === city;
-let isDubliner = isFrom("Dublin");
-let filterByDubliners = filter<User>(isDubliner);
+let maybeUsersJust = fetchUsers(false);
+expect(Maybe.isJust(maybeUsersJust)).to.eql(true);
+expect(maybeUsersJust.getOrElse([])).to.eqls(users);
 
-fetchUsers((maybeUsers) => {
-    let dubliners = errorOrUsers.isJust ? filterByDubliners(maybeUsers.just.value) : [];
-    console.log(dubliners);
-});
+let maybeUsersNothing = fetchUsers(true);
+expect(Maybe.isNothing(maybeUsersNothing)).to.eql(true);
+expect(maybeUsersNothing.getOrElse([]).length).to.eql(0);
+```
+
+The TypeScript type system will ensure that we don't forget
+a null check if we try to access the value directly:
+
+```ts
+maybeUserArray.value.map((u) => u.city); // Object is possibly 'null' or 'undefined'.
 ```
 
 ### Either<TLeft, TRight>
@@ -98,33 +93,35 @@ interface User {
     name: string;
 }
 
-type callback = (response: interfaces.Either<Error, User[]>) => void
+let users = [
+    { city: "Dublin", name: "John" },
+    { city: "Belfast", name: "Dolores" }
+];
 
-function fetchUsers(cb: callback) {
-    $.ajax({
-        type: "GET",
-        url: "/get/users/",
-        success: (data: User[]) => {
-            callback(
-                Either.Right<Error, User[]>(data) // right!
-            );
-        },
-        error: (jqXHR, textStatus, errorThrown) => {
-            callback(
-                Either.Left<Error, User[]>(new Error(errorThrown)) // left!
-            );
-        }
-    });
+let e = new Error("Timeout!");
+
+function fetchUsers(shouldFail: boolean) {
+    if (shouldFail) {
+        return Either.Left<Error, User[]>(e);
+    } else {
+        return Either.Right<Error, User[]>(users);
+    }
 }
 
-let isFrom = (city: string) => (user: User): boolean => user.city === city;
-let isDubliner = isFrom("Dublin");
-let filterByDubliners = filter<User>(isDubliner);
+let eitherRight = fetchUsers(false);
+expect(Either.isRight(eitherRight)).to.eql(true);
+expect(eitherRight.getRightOrElse([])).to.eqls(users);
 
-fetchUsers((errorOrUsers) => {
-    let dubliners = errorOrUsers.isRight ? filterByDubliners(errorOrUsers.getRight()) : [];
-    console.log(dubliners);
-});
+let eitherLeft = fetchUsers(true);
+expect(Either.isLeft(eitherLeft)).to.eql(true);
+expect(eitherLeft.getLeftOrElse(new Error())).to.eqls(e);
+```
+
+The TypeScript type system will ensure that we don't forget
+a null check if we try to access the left or right values directly:
+
+```ts
+eitherErrorOrUserArray.right.value.map((u) => u.city); // Object is possibly 'null' or 'undefined'.
 ```
 
 ## Acknowledgements

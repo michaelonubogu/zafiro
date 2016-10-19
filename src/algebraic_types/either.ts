@@ -3,11 +3,8 @@ import Maybe from "./maybe";
 
 class Either<TLeft, TRight> implements interfaces.Either<TLeft, TRight> {
 
-    public readonly isLeft: boolean;
-    public readonly isRight: boolean;
-
-    private _left: Maybe<TLeft>;
-    private _right: Maybe<TRight>;
+    public readonly left: interfaces.Maybe<TLeft>;
+    public readonly right: interfaces.Maybe<TRight>;
 
     public static Left<TLeft, TRight>(left: TLeft) {
         return new Either<TLeft, TRight>(left, null);
@@ -17,31 +14,35 @@ class Either<TLeft, TRight> implements interfaces.Either<TLeft, TRight> {
         return new Either<TLeft, TRight>(null, right);
     }
 
-    public constructor(left: (TLeft|null), right: (TRight|null)) {
+    public static isLeft(either: Either<any, any>): boolean {
+        return Maybe.isJust(either.left);
+    }
 
-        this._left = new Maybe<TLeft>();
-        this._right = new Maybe<TRight>();
+    public static isRight(either: Either<any, any>): boolean {
+        return Maybe.isJust(either.right);
+    }
 
-        if (left !== null) {
-            this._left = new Maybe<TLeft>(left);
-            this.isLeft = true;
-            this.isRight = false;
+    public constructor(left: (TLeft|interfaces.Nothing), right: (TRight|interfaces.Nothing)) {
+
+        this.left = new Maybe<TLeft>();
+        this.right = new Maybe<TRight>();
+
+        if (left !== null && left !== undefined) {
+            this.left = new Maybe<TLeft>(left);
         }
 
-        if (right !== null) {
-            this._right = new Maybe<TRight>(right);
-            this.isLeft = false;
-            this.isRight = true;
+        if (right !== null && right !== undefined) {
+            this.right = new Maybe<TRight>(right);
         }
 
     }
 
-    public getLeft(): TLeft {
-        return this._left.just.value();
+    public getLeftOrElse(val: TLeft): TLeft {
+        return this.left.getOrElse(val);
     }
 
-    public getRight(): TRight {
-        return this._right.just.value();
+    public getRightOrElse(val: TRight): TRight {
+        return this.right.getOrElse(val);
     }
 
 }
