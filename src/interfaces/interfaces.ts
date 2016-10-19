@@ -1,18 +1,20 @@
 namespace interfaces {
 
     export interface Nothing {
-        isNothing: boolean;
+        isJust(): boolean;
+        isNothing(): boolean;
     }
 
     export interface Just<T> {
-        value: T;
+        value(): T;
+        isJust(): boolean;
+        isNothing(): boolean;
     }
 
     export interface Maybe<T> {
-        isJust: boolean;
-        isNothing: boolean;
         just: Just<T>;
         nothing: Nothing;
+        getOrElse(val: T): T;
     }
 
     export interface Either<TLeft, TRight> {

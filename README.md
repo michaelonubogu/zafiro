@@ -67,8 +67,8 @@ let isFrom = (city: string) => (user: User): boolean => user.city === city;
 let isDubliner = isFrom("Dublin");
 let filterByDubliners = filter<User>(isDubliner);
 
-fetchUsers((errorOrUsers) => {
-    let dubliners = errorOrUsers.isJust ? filterByDubliners(errorOrUsers.just.value) : [];
+fetchUsers((maybeUsers) => {
+    let dubliners = errorOrUsers.isJust ? filterByDubliners(maybeUsers.just.value) : [];
     console.log(dubliners);
 });
 ```

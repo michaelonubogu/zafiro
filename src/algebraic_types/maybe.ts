@@ -4,22 +4,41 @@ import Nothing from "./nothing";
 
 class Maybe<T> implements interfaces.Maybe<T> {
 
-    public readonly isJust: boolean;
-    public readonly isNothing: boolean;
     public readonly just: interfaces.Just<T>;
     public readonly nothing: interfaces.Nothing;
 
+    public static Just<T>(val: T) {
+        return new Maybe<T>(val);
+    }
+
+    public static Nothing<T>() {
+        return new Maybe<T>();
+    }
+
+    public static of<T>(val: T) {
+        return new Maybe<T>(val);
+    }
+
+    public static isJust(maybe: Maybe<any>) {
+        return maybe.just.isJust();
+    }
+
+    public static isNothing(maybe: Maybe<any>) {
+        return maybe.just.isNothing();
+    }
+
     public constructor(val?: T) {
         if (val !== undefined) {
-            this.isJust = true;
-            this.isNothing = false;
             this.just = new Just<T>(val);
         } else {
-            this.isJust = false;
-            this.isNothing = true;
             this.nothing = new Nothing();
         }
     }
+
+    public getOrElse(val: T): T {
+        return this.just.isJust() ? this.just.value() : val;
+    }
+
 }
 
 export default Maybe;
