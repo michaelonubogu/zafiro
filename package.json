@@ -6,7 +6,9 @@
   "jsnext:main": "es/inversify.js",
   "typings": "./dts/inversify.d.ts",
   "scripts": {
-    "test": "gulp"
+    "test": "gulp",
+    "publish-please": "publish-please",
+    "prepublish": "publish-please guard"
   },
   "repository": {
     "type": "git",
@@ -57,7 +59,7 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-sinon": "^1.0.5",
     "mocha": "^3.0.1",
-    "publish-please": "^2.1.4",
+    "publish-please": "^2.2.0",
     "reflect-metadata": "^0.1.3",
     "run-sequence": "^1.2.0",
     "sinon": "^1.17.3",
