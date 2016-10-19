@@ -37,11 +37,11 @@ class Either<TLeft, TRight> implements interfaces.Either<TLeft, TRight> {
     }
 
     public getLeft(): TLeft {
-        return this._left.just.value;
+        return this._left.just.value();
     }
 
     public getRight(): TRight {
-        return this._right.just.value;
+        return this._right.just.value();
     }
 
 }

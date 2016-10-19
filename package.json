@@ -1,6 +1,6 @@
 {
   "name": "zafiro",
-  "version": "0.0.2-alpha.1",
+  "version": "0.0.2-alpha.2",
   "description": "Strongly typed functional programming utilities & algebraic data structures",
   "main": "lib/inversify.js",
   "jsnext:main": "es/inversify.js",
