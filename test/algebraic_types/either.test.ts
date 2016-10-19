@@ -1,4 +1,4 @@
-import Either from "../../src/algebraic_types/either";
+import { Either } from "../../src/index";
 import { expect } from "chai";
 
 describe("Either", () => {

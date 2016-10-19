@@ -1,4 +1,4 @@
-import Maybe from "../../src/algebraic_types/maybe";
+import { Maybe } from "../../src/index";
 import { expect } from "chai";
 
 describe("Maybe", () => {
@@ -42,6 +42,36 @@ describe("Maybe", () => {
         let maybeUsersNothing = fetchUsers(true);
         expect(Maybe.isNothing(maybeUsersNothing)).to.eql(true);
         expect(maybeUsersNothing.getOrElse([]).length).to.eql(0);
+
+    });
+
+    it("Should allow to map to another maybe", () => {
+
+        interface User {
+            city: string;
+            name: string;
+        }
+
+        let data = [
+            { city: "Dublin", name: "John" },
+            { city: "Belfast", name: "Dolores" }
+        ];
+
+        let cities = data.map((user) => user.city);
+
+        let maybeUsersJust = Maybe.Just<User[]>(data);
+        let maybeCitiesJust = maybeUsersJust.map<string[]>((users) => {
+            return users.map((user) => user.city);
+        });
+        expect(Maybe.isJust(maybeCitiesJust)).to.eql(true);
+        expect(maybeCitiesJust.value).to.eqls(cities);
+
+        let maybeUsersNothing = Maybe.Nothing<User[]>();
+        let maybeCitiesNothing = maybeUsersNothing.map<string[]>((users) => {
+            return users.map((user) => user.city);
+        });
+        expect(Maybe.isJust(maybeCitiesJust)).to.eql(true);
+        expect(maybeCitiesNothing.value).to.eqls(null);
 
     });
 
