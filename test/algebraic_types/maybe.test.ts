@@ -1,5 +1,7 @@
-import { Maybe } from "../../src/index";
+import { algebraicTypes } from "../../src/index";
 import { expect } from "chai";
+
+let Maybe = algebraicTypes.Maybe;
 
 describe("Maybe", () => {
 

@@ -1,5 +1,8 @@
-import { interfaces, Maybe, Either } from "../src/index";
+import { interfaces, algebraicTypes } from "../src/index";
 import { expect } from "chai";
+
+let Either = algebraicTypes.Either;
+let Maybe = algebraicTypes.Maybe;
 
 describe("Index", () => {
 
