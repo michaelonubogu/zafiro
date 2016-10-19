@@ -1,5 +1,5 @@
 <img width="400" src="assets/logo.png" />
-
+### Stringly typed algebraic data types, immutable data structures and other functional programming utilitites powered by TypeScript
 [![npm version](https://badge.fury.io/js/zafiro.svg)](http://badge.fury.io/js/zafiro)
 [![Build Status](https://secure.travis-ci.org/remojansen/zafiro.svg?branch=master)](https://travis-ci.org/remojansen/zafiro)
 [![Build status](https://ci.appveyor.com/api/projects/status/5kbh6wgi9rg7v6pr?svg=true)](https://ci.appveyor.com/project/remojansen/zafiro)
@@ -17,9 +17,9 @@
 I'm working on this project as a learning exercise.
 Please don't expect it to become a real thing...
 
-# Strongly typed algebraic data types
+## Strongly typed algebraic data types
 
-## Nothing
+### Nothing
 The type `Nothing` represents the absence of some type.
 
 ```ts
@@ -27,7 +27,7 @@ let nothing = new Nothing();
 console.log(nothing.isNothing); // true
 ```
 
-## Just<T>
+### Just<T>
 The Just type represents the existence of some type.
 
 ```ts
@@ -35,7 +35,7 @@ let justANumber = new Just<number>(5);
 console.log(justANumber.value); // 5
 ```
 
-## Maybe<T>
+### Maybe<T>
 The Maybe type represents the possibility of some value or
 nothing. It is often used where null traditionally would to
 represent the absence of a value. The advantage of using a
@@ -81,7 +81,7 @@ fetchUsers((maybeUsers) => {
 });
 ```
 
-## Either<TLeft, TRight>
+### Either<TLeft, TRight>
 Either is a representation of two possible types of values, 
 sometimes referred to as the disjoint union, or coproduct of 
 two types.
@@ -127,7 +127,7 @@ fetchUsers((errorOrUsers) => {
 });
 ```
 
-# Acknowledgements
+## Acknowledgements
 This project would not be possible without the amazing work
 acomplished by the following OSS projects:
 
