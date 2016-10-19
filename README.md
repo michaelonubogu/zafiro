@@ -18,7 +18,7 @@
 
 ## Installation
 
-:warning: PLEASE NOTE: Zafiro requires TypeScript 2.0 with `strictNullChecks` mode enabled.
+:warning: PLEASE NOTE :warning: Zafiro requires TypeScript 2.0 with `strictNullChecks` mode enabled.
 
 You can install Zafiro using npm:
 
