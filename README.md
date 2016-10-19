@@ -1,6 +1,6 @@
 <img width="400" src="assets/logo.png" />
 
-### Stringly typed algebraic data types, immutable data structures and other functional programming utilitites powered by TypeScript
+### Strongly typed algebraic data types, immutable data structures and other functional programming utilitites powered by TypeScript
 
 [![npm version](https://badge.fury.io/js/zafiro.svg)](http://badge.fury.io/js/zafiro)
 [![Build Status](https://secure.travis-ci.org/remojansen/zafiro.svg?branch=master)](https://travis-ci.org/remojansen/zafiro)
