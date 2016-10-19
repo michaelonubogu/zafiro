@@ -2,7 +2,7 @@ import interfaces from "../interfaces/interfaces";
 
 class Maybe<T> implements interfaces.Maybe<T> {
 
-    public value: (interfaces.Nothing|T);
+    public readonly value: (interfaces.Nothing|T);
 
     public static Just<T>(val: T): Maybe<T> {
         return new Maybe<T>(val);
