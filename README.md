@@ -3,6 +3,7 @@
 [![npm version](https://badge.fury.io/js/zafiro.svg)](http://badge.fury.io/js/zafiro)
 [![Build Status](https://secure.travis-ci.org/remojansen/zafiro.svg?branch=master)](https://travis-ci.org/remojansen/zafiro)
 [![Build status](https://ci.appveyor.com/api/projects/status/5kbh6wgi9rg7v6pr?svg=true)](https://ci.appveyor.com/project/remojansen/zafiro)
+[![Test Coverage](https://codeclimate.com/github/remojansen/zafiro/badges/coverage.svg)](https://codeclimate.com/github/remojansen/zafiro/coverage)
 [![Dependencies](https://david-dm.org/remojansen/zafiro.svg)](https://david-dm.org/remojansen/zafiro#info=dependencies)
 [![img](https://david-dm.org/remojansen/zafiro/dev-status.svg)](https://david-dm.org/remojansen/zafiro/#info=devDependencies)
 [![img](https://david-dm.org/remojansen/zafiro/peer-status.svg)](https://david-dm.org/remojansen/zafiro/#info=peerDependenciess)
