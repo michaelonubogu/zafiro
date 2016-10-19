@@ -20,6 +20,9 @@ I'm working on this project as a learning exercise.
 Please don't expect it to become a real thing...
 
 ## Installation
+
+:warning: **IMPORTANT** :warning: Zafiro requires TypeScript 2.0 with `strictNullChecks` mode enabled.
+
 You can install Zafiro using npm:
 
 ```
@@ -27,8 +30,6 @@ $ npm install --save zafiro
 ```
 
 The type definitions are included in the npm module.
-
-**:warning: Zafiro requires TypeScript 2.0 with `--strictNullChecks` :warning:**
 
 ## Strongly typed algebraic data types
 
