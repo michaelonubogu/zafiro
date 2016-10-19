@@ -1,7 +1,7 @@
 {
   "name": "zafiro",
-  "version": "0.0.2-alpha.3",
-  "description": "Strongly typed functional programming utilities & algebraic data structures",
+  "version": "0.0.2-alpha.4",
+  "description": "Strongly typed algebraic data types, immutable data structures and other functional programming utilitites powered by TypeScript",
   "main": "lib/inversify.js",
   "jsnext:main": "es/inversify.js",
   "typings": "./dts/inversify.d.ts",
