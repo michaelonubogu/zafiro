@@ -1,4 +1,4 @@
-import { reduce, length } from "./arrays";
+import { reduce, length } from "./array";
 
 export let addition = (a: number) => (b: number) => a + b;
 export let subtraction = (a: number) => (b: number) => a - b;
