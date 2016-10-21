@@ -123,10 +123,10 @@ eitherErrorOrUserArray.right.value.map((u) => u.city); // Object is possibly 'nu
 ```
 
 ## Strongly typed immutable data types
-TODO
+:construction: WORK IN PROGRESS :construction:
 
 ## Strongly typed FP utils
-TODO
+:construction: WORK IN PROGRESS :construction:
 
 ## Acknowledgements
 This project would not be possible without the amazing work
