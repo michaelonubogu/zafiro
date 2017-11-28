@@ -19,11 +19,15 @@ export default async function createApp(
     const dir = options.dir || ["..", "..", "..", "..", "src"];
 
     // Create and configure IoC container
-    const container = new Container();
+    const container = options.container || new Container();
 
     // Create bindings
-    const modules = options.containerModules;
-    container.load(coreBindings, ...modules);
+    container.load(coreBindings);
+
+    if (options.containerModules) {
+        const modules = options.containerModules;
+        container.load(...modules);
+    }
 
     // Create bindings for repositories
     await bindRepositories(
@@ -42,13 +46,15 @@ export default async function createApp(
     // Create and configure Express server
     const server = new InversifyExpressServer(
         container,
-        null,
-        null,
-        null,
-        options.AuthProvider
+        options.customRouter ? options.customRouter : null,
+        options.routingConfig ? options.routingConfig : null,
+        options.customApp ? options.customApp : null,
+        options.AuthProvider ? options.AuthProvider : undefined,
     );
 
-    server.setConfig(options.expressConfig);
+    if (options.expressConfig) {
+        server.setConfig(options.expressConfig);
+    }
 
     // Create and run Express app
     const app = server.build();

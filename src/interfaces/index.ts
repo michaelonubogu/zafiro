@@ -6,11 +6,15 @@ import { interfaces as expressInterfaces } from "inversify-express-utils";
 export type SupportedDatabases = ConnectionOptions["type"];
 
 export interface AppOptions {
-    dir?: string[];
     database: SupportedDatabases;
-    containerModules: interfaces.ContainerModule[];
-    AuthProvider: { new(): expressInterfaces.AuthProvider };
-    expressConfig: (app: express.Application) => void;
+    containerModules?: interfaces.ContainerModule[];
+    dir?: string[];
+    container?: interfaces.Container;
+    customRouter?: express.Router;
+    routingConfig?: expressInterfaces.RoutingConfig;
+    customApp?: express.Application;
+    AuthProvider?: { new(): expressInterfaces.AuthProvider };
+    expressConfig?: (app: express.Application) => void;
 }
 
 export interface DbClient {
