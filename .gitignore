@@ -61,3 +61,4 @@ src/syntax/*.d.ts
 test/*.js
 test/**/*.js
 type_definitions/**/*.js
+package-lock.json

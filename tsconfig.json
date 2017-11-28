@@ -2,17 +2,17 @@
     "compilerOptions": {
         "target": "es5",
         "lib": ["es6", "dom"],
-        "types": ["mocha", "reflect-metadata"],
+        "types": ["node", "mocha", "reflect-metadata"],
         "module": "commonjs",
         "moduleResolution": "node",
+        "isolatedModules": false,
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "noImplicitAny": true,
-        "removeComments": true,
         "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": false,
-        "noResolve": false,
-        "strictNullChecks": true
+        "suppressImplicitAnyIndexErrors": true,
+        "strictNullChecks": true,
+        "outDir": "lib"
     }
 }
