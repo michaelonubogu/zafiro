@@ -17,7 +17,7 @@ $ npm install
 3 Run build process
 
 ```
-$ gulp
+$ npm test
 ```
 
 ## Guidelines
