@@ -1,8 +1,8 @@
-# Zafiro
+# :gem: Zafiro :gem:
 
 <img width="400" src="./assets/logo.png" />
 
-## A lightweight web framework for Node.js apps powered by InversifyJS, TypeORM and Express
+## A lightweight web framework for Node.js apps powered by [InversifyJS](https://github.com/inversify/InversifyJS), [TypeORM](https://github.com/typeorm/typeorm) and [Express](https://github.com/expressjs/express) :rocket:
 
 [![Join the chat at https://gitter.im/remojansen/zafiro](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/remojansen/zafiro?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![npm version](https://badge.fury.io/js/zafiro.svg)](http://badge.fury.io/js/zafiro)
