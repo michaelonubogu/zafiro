@@ -2,7 +2,7 @@
 
 <img width="400" src="./assets/logo.png" />
 
-## A lightweight web framework for Node.js apps powered by [InversifyJS](https://github.com/inversify/InversifyJS), [TypeORM](https://github.com/typeorm/typeorm) and [Express](https://github.com/expressjs/express) :rocket:
+### Lightweight web framework for Node.js apps powered by [InversifyJS](https://github.com/inversify/InversifyJS), [TypeORM](https://github.com/typeorm/typeorm) and [Express](https://github.com/expressjs/express) :rocket:
 
 [![Join the chat at https://gitter.im/inversify/InversifyJS](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/inversify/InversifyJS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Join the chat at https://gitter.im/remojansen/zafiro](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/remojansen/zafiro?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -50,7 +50,7 @@ import { AuthProvider } from "./infrastructure/auth/auth_provider";
 - `DATABASE_PASSWORD`
 - `DATABASE_DB`
 
-## Required project folders
+### Required project folders
 
 - `/src/controllers/` You must add your controllers unders this folder. The controllers are powerd by [inversify-express-utils](https://github.com/inversify/inversify-express-utils).
 
@@ -58,7 +58,7 @@ import { AuthProvider } from "./infrastructure/auth/auth_provider";
 
 > :warning: Please note that each entity and each controller in your application must be defined on its own file and be exported using a [`default` ES6 export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export#Using_the_default_export).
 
-## Defining an Entity
+### Defining an Entity
 
 You can define an entity using the [TypeORM API](https://github.com/typeorm/typeorm#create-an-entity):
 
@@ -85,7 +85,7 @@ export default class DirectMessage {
 }
 ```
 
-## Declaring a Repository<T>
+### Declaring a Repository<T>
 
 A `Repository<T>` will be generated automatically at runtime. The [repository API](https://github.com/typeorm/typeorm#loading-from-the-database) is powered by TypeORM.
 
@@ -105,7 +105,7 @@ Then you can inject it using the `@inject` annotation:
 
 The dependency injection in Zafiro is powered by [InversifyJS](https://github.com/inversify/InversifyJS).
 
-## Declaring a Controller
+### Declaring a Controller
 
 ```ts
 import { injectable, inject } from "inversify";
