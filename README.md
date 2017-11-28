@@ -60,10 +60,10 @@ import { AuthProvider } from "./infrastructure/auth/auth_provider";
 
 ### Defining an Entity
 
-You can define an entity using the [TypeORM API](https://github.com/typeorm/typeorm#create-an-entity):
+You can define an entity as follows:
 
 ```ts
-import {Entity, Column, PrimaryGeneratedColumn} from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export default class DirectMessage {
@@ -85,6 +85,8 @@ export default class DirectMessage {
 }
 ```
 
+The Entity API is powered by [TypeORM API](https://github.com/typeorm/typeorm#create-an-entity):
+
 ### Declaring a Repository<T>
 
 A `Repository<T>` will be generated automatically at runtime. The [repository API](https://github.com/typeorm/typeorm#loading-from-the-database) is powered by TypeORM.
@@ -103,9 +105,13 @@ Then you can inject it using the `@inject` annotation:
 @inject(TYPE.DirectMessageRepository) private readonly _dmRepository: Repository<DirectMessage>;
 ```
 
-The dependency injection in Zafiro is powered by [InversifyJS](https://github.com/inversify/InversifyJS).
+The Dependency Injection API in Zafiro is powered by [InversifyJS](https://github.com/inversify/InversifyJS).
+
+The Repository API is powered by [TypeORM API](https://github.com/typeorm/typeorm#create-an-entity):
 
 ### Declaring a Controller
+
+You can declare a controller as follows:
 
 ```ts
 import { injectable, inject } from "inversify";
@@ -130,6 +136,8 @@ class UserPreferencesController extends BaseHttpController {
 
 }
 ```
+
+The Controllers API in Zafiro is powered by [inversify-express-utils](https://github.com/inversify/inversify-express-utils).
 
 ## TODOs
 
