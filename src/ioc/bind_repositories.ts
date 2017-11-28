@@ -6,6 +6,7 @@ import { TYPE } from "../constants/types";
 import readdirContents from "../fs/readdir_contents";
 
 export default async function bindRepositories(
+    database: interfaces.SupportedDatabases,
     container: inversifyInterfaces.Container,
     directoryName: string,
     getPath: (dirOrFile: string[]) => string
@@ -15,7 +16,8 @@ export default async function bindRepositories(
     const entities = await readdirContents(directoryName, getPath);
     const entityTypes = entities.map(e => Symbol.for(`Repository<${e.name}>`));
 
-    const repositories = await factory.getRepository<any>(
+    const repositories = await factory.getRepositories<any>(
+        database,
         entities,
         directoryName,
         getPath

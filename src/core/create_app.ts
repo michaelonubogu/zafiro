@@ -20,6 +20,7 @@ export default async function createApp(
 
     // Create bindings for repositories
     await bindRepositories(
+        options.database,
         container,
         "entities",
         (dirOrFile: string[]) => path.join(__dirname, ...options.dir, ...dirOrFile)

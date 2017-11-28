@@ -43,7 +43,7 @@
       "check-whitespace"
     ],
     "quotemark": [true, "double", "avoid-escape"],
-    "radix": true,
+    "radix": false,
     "semicolon": true,
     "trailing-comma": false,
     "triple-equals": [true, "allow-null-check"],

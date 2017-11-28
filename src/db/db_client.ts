@@ -11,32 +11,44 @@ export default class DbClient implements interfaces.DbClient {
     private _cache: Connection | null = null;
 
     public async getConnection(
+        database: interfaces.SupportedDatabases,
         directoryName: string,
         getPath: (dirOrFile: string[]) => string
     ) {
         if (this._cache !== null) {
             return this._cache;
         } else {
-            this._cache = await this._createConnection(directoryName, getPath);
+            this._cache = await this._createConnection(database, directoryName, getPath);
             return this._cache;
         }
     }
 
     private async _createConnection(
+        database: interfaces.SupportedDatabases,
         directoryName: string,
         getPath: (dirOrFile: string[]) => string
     ) {
         try {
-            const dbHost = process.env.POSTGRES_HOST;
-            const dbPort = 5432;
-            const dbUser = process.env.POSTGRES_USER;
-            const dbPassword = process.env.POSTGRES_PASSWORD;
-            const dbName = process.env.POSTGRES_DB;
-            const connStr = `postgres://${dbUser}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`;
+            const dbHost = process.env.DATABASE_HOST;
+            const dbPort = parseInt(process.env.DATABASE_PORT as any);
+            const dbUser = process.env.DATABASE_USER;
+            const dbPassword = process.env.DATABASE_PASSWORD;
+            const dbName = process.env.DATABASE_DB;
             const paths = await this._getEntityPaths(directoryName, getPath);
-            console.log(chalk.cyan(`Trying to connect to DB: ${connStr}`));
+            console.log(
+                chalk.cyan(
+                    `
+                    Trying to connect to DB:
+                    - host ${dbHost}
+                    - port ${dbPort}
+                    - user ${dbUser}
+                    - password ${dbPassword}
+                    - database ${dbName}
+                    `
+                )
+            );
             const connection = await createConnection({
-                type: "postgres",
+                type: database as any,
                 host: dbHost,
                 port: dbPort,
                 username: dbUser,

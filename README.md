@@ -22,7 +22,6 @@
 
 ```ts
 import "reflect-metadata";
-import chalk from "chalk";
 import { createApp } from "zafiro";
 import { appBindings } from "./config/ioc_config";
 import { expressConfig } from "./config/express_config";
@@ -31,6 +30,7 @@ import { AuthProvider } from "./infrastructure/auth/auth_provider";
 (async () => {
 
     const app = await createApp({
+        database: "postgres",
         dir: ["..", "..", "src"],
         containerModules: [appBindings]
         AuthProvider: AuthProvider,
@@ -39,10 +39,27 @@ import { AuthProvider } from "./infrastructure/auth/auth_provider";
 
     app.listen(
         3000,
-        () => console.log(
-            chalk.green("Example app listening on port 3000!")
-        )
+        () => console.log("Example app listening on port 3000!")
     );
 
 })();
 ```
+
+### Environment variables
+
+- `DATABASE_HOST`
+- `DATABASE_PORT`
+- `DATABASE_USER`
+- `DATABASE_PASSWORD`
+- `DATABASE_DB`
+
+## TODOs
+
+- [ ] Support access to `inversify-express-utils` options.
+- [ ] Support access to `TypeORM` options.
+- [ ] Support access to internal `container`.
+- [ ] Implement automated tests
+- [ ] Document everything
+- [ ] Provide default implementations of `AuthProvider`?
+- [ ] Support multiple auth providers?
+- [ ] Create offical example

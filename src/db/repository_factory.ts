@@ -10,12 +10,14 @@ export default class RepositoryFactory implements interfaces.RepositoryFactory {
 
     @inject(TYPE.DbClient) private readonly _dbClient: interfaces.DbClient;
 
-    public async getRepository<T>(
+    public async getRepositories<T>(
+        database: interfaces.SupportedDatabases,
         entities: Array<{ new(): T }>,
         directoryName: string,
         getPath: (dirOrFile: string[]) => string
     ): Promise<Repository<T>[]> {
         const connection = await this._dbClient.getConnection(
+            database,
             directoryName,
             getPath
         );
