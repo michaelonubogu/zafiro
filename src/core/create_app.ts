@@ -11,6 +11,13 @@ export default async function createApp(
     options: interfaces.AppOptions
 ) {
 
+    // The frameworks expects the controllers and entities
+    // to be unders /src/controllers and /src/entitites
+    // We need to find that folder from the zafiro folder
+    // at /node_modules/zafiro/lib/core/ which means that
+    // we need to go to ../../../../src/
+    const dir = options.dir || ["..", "..", "..", "..", "src"];
+
     // Create and configure IoC container
     const container = new Container();
 
@@ -23,13 +30,13 @@ export default async function createApp(
         options.database,
         container,
         "entities",
-        (dirOrFile: string[]) => path.join(__dirname, ...options.dir, ...dirOrFile)
+        (dirOrFile: string[]) => path.join(__dirname, ...dir, ...dirOrFile)
     );
 
     // Create bindings for controllers
     await bindControllers(
         "controllers",
-        (dirOrFile: string[]) => path.join(__dirname, ...options.dir, ...dirOrFile)
+        (dirOrFile: string[]) => path.join(__dirname, ...dir, ...dirOrFile)
     );
 
     // Create and configure Express server

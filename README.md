@@ -27,7 +27,6 @@ import { AuthProvider } from "./infrastructure/auth/auth_provider";
 
     const app = await createApp({
         database: "postgres",
-        dir: ["..", "..", "src"],
         containerModules: [appBindings]
         AuthProvider: AuthProvider,
         expressConfig: expressConfig
