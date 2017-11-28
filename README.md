@@ -56,7 +56,7 @@ import { AuthProvider } from "./infrastructure/auth/auth_provider";
 
 - `/src/entities/` You must add your entities unders this folder. The entities are powerd by [TypeORM](https://github.com/typeorm/typeorm).
 
-:warning: Please nothe that each entity and each controller in your application must be defined on its own file and be exported using a [`default` ES6 export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export#Using_the_default_export).
+> :warning: Please note that each entity and each controller in your application must be defined on its own file and be exported using a [`default` ES6 export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export#Using_the_default_export).
 
 ## Defining an Entity
 
@@ -85,9 +85,25 @@ export default class DirectMessage {
 }
 ```
 
-## Declaring a Repository
+## Declaring a Repository<T>
 
-A `Repository<DirectMessage>` will be generated automatically at runtime. The [repository API](https://github.com/typeorm/typeorm#loading-from-the-database) is powered by TypeORM.
+A `Repository<T>` will be generated automatically at runtime. The [repository API](https://github.com/typeorm/typeorm#loading-from-the-database) is powered by TypeORM.
+
+You can access a `Repository<T>` by injection it into a `Controller`, `BaseMiddleware`, `AuthProvider`, etc. First you need to declare a type identifier for the repository that you wish to inject:
+
+```ts
+const TYPE = {
+    DirectMessageRepository: Symbol.for("Repository<DirectMessage>")
+};
+```
+
+Then you can inject it using the `@inject` annotation:
+
+```t
+@inject(TYPE.DirectMessageRepository) private readonly _dmRepository: Repository<DirectMessage>;
+```
+
+The dependency injection in Zafiro is powered by [InversifyJS](https://github.com/inversify/InversifyJS).
 
 ## Declaring a Controller
 
@@ -99,7 +115,7 @@ import { TYPE } from "./contants/types";
 @controller("/direct_message")
 class UserPreferencesController extends BaseHttpController {
 
-    @inject(TYPE.PhotoRepository) private readonly _dmRepository: Repository<DirectMessage>;
+    @inject(TYPE.DirectMessageRepository) private readonly _dmRepository: Repository<DirectMessage>;
 
     @httpGet("/")
     public async get() {
