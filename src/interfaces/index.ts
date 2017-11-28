@@ -4,10 +4,10 @@ import { interfaces } from "inversify";
 import { interfaces as expressInterfaces } from "inversify-express-utils";
 
 export interface AppOptions {
-    dir: string[],
-    containerModules: interfaces.ContainerModule[],
-    AuthProvider: { new(): expressInterfaces.AuthProvider },
-    expressConfig: (app: express.Application) => void
+    dir: string[];
+    containerModules: interfaces.ContainerModule[];
+    AuthProvider: { new(): expressInterfaces.AuthProvider };
+    expressConfig: (app: express.Application) => void;
 }
 
 export interface DbClient {
@@ -22,5 +22,5 @@ export interface RepositoryFactory {
         entity: Array<{ new (): T }>,
         directoryName: string,
         getPath: (dirOrFile: string[]) => string
-    ): Promise<Repository<T>[]>
+    ): Promise<Repository<T>[]>;
 }

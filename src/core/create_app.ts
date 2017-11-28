@@ -1,3 +1,4 @@
+import * as express from "express";
 import { Container } from "inversify";
 import * as path from "path";
 import { InversifyExpressServer } from "inversify-express-utils";

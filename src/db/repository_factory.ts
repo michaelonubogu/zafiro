@@ -1,4 +1,4 @@
-import { createConnection, Connection } from "typeorm";
+import { createConnection, Connection, Repository } from "typeorm";
 import { injectable, inject } from "inversify";
 import chalk from "chalk";
 import { TYPE } from "../constants/types";
@@ -11,10 +11,10 @@ export default class RepositoryFactory implements interfaces.RepositoryFactory {
     @inject(TYPE.DbClient) private readonly _dbClient: interfaces.DbClient;
 
     public async getRepository<T>(
-        entities: Array<{ new() : T }>,
+        entities: Array<{ new(): T }>,
         directoryName: string,
         getPath: (dirOrFile: string[]) => string
-    ) {
+    ): Promise<Repository<T>[]> {
         const connection = await this._dbClient.getConnection(
             directoryName,
             getPath
