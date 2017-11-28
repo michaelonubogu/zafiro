@@ -45,13 +45,18 @@ import { AuthProvider } from "./infrastructure/auth/auth_provider";
 })();
 ```
 
-### Environment variables
+### Required environment variables
 
 - `DATABASE_HOST`
 - `DATABASE_PORT`
 - `DATABASE_USER`
 - `DATABASE_PASSWORD`
 - `DATABASE_DB`
+
+## Required project folders
+
+- `controllers`
+- `entities`
 
 ## TODOs
 
