@@ -37,14 +37,12 @@ export default class DbClient implements interfaces.DbClient {
             const paths = await this._getEntityPaths(directoryName, getPath);
             console.log(
                 chalk.cyan(
-                    `
-                    Trying to connect to DB:
-                    - host ${dbHost}
-                    - port ${dbPort}
-                    - user ${dbUser}
-                    - password ${dbPassword}
-                    - database ${dbName}
-                    `
+                    "Trying to connect to DB: \n" +
+                    `- host ${dbHost}\n` +
+                    `- port ${dbPort}\n` +
+                    `- user ${dbUser}\n` +
+                    `- password ${dbPassword}\n` +
+                    `- database ${dbName}\n`
                 )
             );
             const connection = await createConnection({
