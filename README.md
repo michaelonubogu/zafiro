@@ -1,6 +1,8 @@
+# Zafiro
+
 <img width="400" src="/assets/logo.png" />
 
-### A lightweight web framework for Node.js apps powered by InversifyJS, TypeORM and Express
+## A lightweight web framework for Node.js apps powered by InversifyJS, TypeORM and Express
 
 [![npm version](https://badge.fury.io/js/zafiro.svg)](http://badge.fury.io/js/zafiro)
 [![Build Status](https://secure.travis-ci.org/remojansen/zafiro.svg?branch=master)](https://travis-ci.org/remojansen/zafiro)
@@ -15,3 +17,32 @@
 [![NPM](https://nodei.co/npm-dl/zafiro.png?months=9&height=3)](https://nodei.co/npm/zafiro/)
 
 :construction: WORK IN PROGRESS :construction:
+
+## The basics
+
+```ts
+import "reflect-metadata";
+import chalk from "chalk";
+import { createApp } from "zafiro";
+import { appBindings } from "./config/ioc_config";
+import { expressConfig } from "./config/express_config";
+import { AuthProvider } from "./infrastructure/auth/auth_provider";
+
+(async () => {
+
+    const app = await createApp({
+        dir: ["..", "..", "src"],
+        containerModules: [appBindings]
+        AuthProvider: AuthProvider,
+        expressConfig: expressConfig
+    });
+
+    app.listen(
+        3000,
+        () => console.log(
+            chalk.green("Example app listening on port 3000!")
+        )
+    );
+
+})();
+```
