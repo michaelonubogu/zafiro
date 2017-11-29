@@ -109,7 +109,7 @@ export default class DirectMessage {
 }
 ```
 
-The Entity API is powered by [TypeORM API](https://github.com/typeorm/typeorm#create-an-entity):
+The Entity API in Zafiro is powered by [TypeORM API](https://github.com/typeorm/typeorm#create-an-entity):
 
 ### Declaring a Repository<T>
 
