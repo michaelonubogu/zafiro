@@ -165,7 +165,7 @@ The Controllers API in Zafiro is powered by [inversify-express-utils](https://gi
 
 ## Why Zafiro?
 
-I created Zafiro because I love working with JavaScript and Node.js but I miss the boilerplate-automation and the type-safety productivity boost that I have experience while working with other technologies in the past.
+I created Zafiro because I love working with JavaScript and Node.js but I miss the boilerplate-automation and the type-safety productivity boost that I have experienced while working with other technologies in the past.
 
 ![](/assets/joke.png)
 
