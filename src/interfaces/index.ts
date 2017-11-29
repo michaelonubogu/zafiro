@@ -40,3 +40,16 @@ export interface AccountRepository {
     isResourceOwner(userDetails: any, resourceId: any): Promise<boolean>;
     isInRole(userDetails: any, role: string): Promise<boolean>;
 }
+
+export type MakeMiddlewareCallBack = (logger: Logger) => (
+    httpContext: expressInterfaces.HttpContext,
+    next: express.NextFunction
+) => void;
+
+export interface Logger {
+    info(msg: string, ...args: any[]): void;
+    error(msg: string, ...args: any[]): void;
+    debug(msg: string, ...args: any[]): void;
+    warn(msg: string, ...args: any[]): void;
+    success(msg: string, ...args: any[]): void;
+}

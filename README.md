@@ -31,17 +31,24 @@ import { AccountRepository } from "./repositories/account_repository";
 
 (async () => {
 
-    const app = await createApp({
-        database: "postgres",
-        containerModules: [appBindings]
-        AuthProvider: AuthProvider,
-        AccountRepository: AccountRepository
-    });
+    try {
+        const app = await createApp({
+            database: "postgres",
+            containerModules: [bindings],
+            AccountRepository: CustomAccountRepository,
+            expressConfig: expressConfig
+        });
 
-    app.listen(
-        3000,
-        () => console.log("Example app listening on port 3000!")
-    );
+        app.listen(
+            3000,
+            () => console.log(
+                chalk.green("Example app listening on port 3000!")
+            )
+        );
+
+    } catch (e) {
+        console.log(chalk.redBright(e.message));
+    }
 
 })();
 ```
