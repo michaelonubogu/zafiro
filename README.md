@@ -53,14 +53,14 @@ import { CustomAccountRepository } from "./repositories/account_repository";
 The `createApp` function takes a configuration object that can be used to configure your application:
 
 - The `database` property allows you to select the database server to be used. Please refer to TypeORM to learn more about the supported databases.
-- The `containerModules` [Optional] property allows you to declare the dependency injection bindings using an array of InversifyJS `ContainerModule`.
-- The `dir` [Optional] property allows you to customize the root directory of your application. This directory is expected to contain the `controllers` and `entities` directories.
-- The `container` [Optional] property allows you to provide a custom InversifyJS `Container` instance.
-- The `customRouter` [Optional] property allows you to provide a custom Express `Router` instance.
-- The `routingConfig` [Optional] property allows you to provide a custom inversify-express-utils `RoutingConfig`.
-- The `customApp` [Optional] property allows you to provide a custom Express application instance.
-- The `AccountRepository` [Optional] property allows you to provide a custom `AccountRepository`.
-- The `expressConfig` [Optional] property is a function `(app: express.Application) => void` that can be used to set some Express config.
+- The `containerModules` **[Optional]** property allows you to declare the dependency injection bindings using an array of InversifyJS `ContainerModule`.
+- The `dir` **[Optional]** property allows you to customize the root directory of your application. This directory is expected to contain the `controllers` and `entities` directories.
+- The `container` **[Optional]** property allows you to provide a custom InversifyJS `Container` instance.
+- The `customRouter` **[Optional]** property allows you to provide a custom Express `Router` instance.
+- The `routingConfig` **[Optional]** property allows you to provide a custom inversify-express-utils `RoutingConfig`.
+- The `customApp` **[Optional]** property allows you to provide a custom Express application instance.
+- The `AccountRepository` **[Optional]** property allows you to provide a custom `AccountRepository`.
+- The `expressConfig` **[Optional]** property is a function `(app: express.Application) => void` that can be used to set some Express config.
 
 ### Required Environment Variables
 
@@ -162,6 +162,22 @@ class UserPreferencesController extends BaseHttpController {
 ```
 
 The Controllers API in Zafiro is powered by [inversify-express-utils](https://github.com/inversify/inversify-express-utils).
+
+## Why Zafiro?
+
+I created Zafiro because I love working with JavaScript and Node.js but I miss the boilerplate-automation and the type-safety productivity boost that I have experience while working with other technologies in the past. 
+
+Thanks to InversifyJS and TypeORM, Zafiro is able to automate a lot of the boilerplate required to create an Express application. As a first step, Zafiro is able to create a database connection, auto-generate the data repositories and inject then into your controllers:
+
+![](./assets/out.png)
+
+Zafiro has been designed with the goal of providing a great developer experience.
+
+I plan to continue working hard to: 
+
+- Make Zafiro very robust.
+- Reduce the amount of required boilerplate.
+- Improve the developer experience.
 
 ## Example Application
 
