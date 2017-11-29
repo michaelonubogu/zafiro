@@ -131,7 +131,7 @@ Then you can inject it using the `@inject` annotation:
 
 The Dependency Injection API in Zafiro is powered by [InversifyJS](https://github.com/inversify/InversifyJS).
 
-The Repository API is powered by [TypeORM API](https://github.com/typeorm/typeorm#create-an-entity):
+The Repository API in Zafiro is powered by [TypeORM API](https://github.com/typeorm/typeorm#create-an-entity):
 
 ### Declaring a Controller
 
