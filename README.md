@@ -27,7 +27,7 @@ import "reflect-metadata";
 import { createApp } from "zafiro";
 import { appBindings } from "./config/ioc_config";
 import { expressConfig } from "./config/express_config";
-import { AuthProvider } from "./infrastructure/auth/auth_provider";
+import { AccountRepository } from "./repositories/account_repository";
 
 (async () => {
 
@@ -35,7 +35,7 @@ import { AuthProvider } from "./infrastructure/auth/auth_provider";
         database: "postgres",
         containerModules: [appBindings]
         AuthProvider: AuthProvider,
-        expressConfig: expressConfig
+        AccountRepository: AccountRepository
     });
 
     app.listen(
