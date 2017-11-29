@@ -12,7 +12,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/remojansen/zafiro/badge.svg)](https://snyk.io/test/github/remojansen/zafiro)
 [![Twitter Follow](https://img.shields.io/twitter/follow/InversifyJS.svg?style=flat&maxAge=86400)](https://twitter.com/inversifyjs)
 
-:construction: WORK IN PROGRESS :construction:
+:warning: :construction: This library is under construction :construction: :warning:
 
 ## The basics
 
