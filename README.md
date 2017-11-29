@@ -55,7 +55,7 @@ The `createApp` function takes a configuration object that can be used to config
 - The `customRouter` [Optional] property allows you to provide a custom Express `Router` instance.
 - The `routingConfig` [Optional] property allows you to provide a custom inversify-express-utils `RoutingConfig`.
 - The `customApp` [Optional] property allows you to provide a custom Express application instance.
-- The `AuthProvider` [Optional] property allows you to provide a custom inversidy-express-utils `AuthProvider`.
+- The `AccountRepository` [Optional] property allows you to provide a custom `AccountRepository`.
 - The `expressConfig` [Optional] property is a function `(app: express.Application) => void` that can be used to set some Express config.
 
 ### Required environment variables

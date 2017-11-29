@@ -6,6 +6,9 @@ import { coreBindings }  from "../config/ioc_config";
 import bindControllers from "../ioc/bind_controllers";
 import bindRepositories from "../ioc/bind_repositories";
 import * as interfaces from "../interfaces";
+import { TYPE } from "../constants/types";
+import { AuthProvider } from "../auth/auth_provider";
+import { principalFactory } from "../auth/principal_factory";
 
 export default async function createApp(
     options: interfaces.AppOptions
@@ -43,13 +46,28 @@ export default async function createApp(
         (dirOrFile: string[]) => path.join(__dirname, ...dir, ...dirOrFile)
     );
 
+    if (options.AccountRepository) {
+        container.bind<interfaces.AccountRepository>(TYPE.AccountRepository)
+                 .to(options.AccountRepository);
+    } else {
+
+        const defaultAccountRepository: interfaces.AccountRepository = {
+            getPrincipal: (token: string) => Promise.resolve(principalFactory(null)),
+            isResourceOwner: (userDetails: any, resourceId: any) => Promise.resolve(false),
+            isInRole: (userDetails: any, role: string) => Promise.resolve(false)
+        };
+
+        container.bind<interfaces.AccountRepository>(TYPE.AccountRepository)
+                .toConstantValue(defaultAccountRepository);
+    }
+
     // Create and configure Express server
     const server = new InversifyExpressServer(
         container,
         options.customRouter ? options.customRouter : null,
         options.routingConfig ? options.routingConfig : null,
         options.customApp ? options.customApp : null,
-        options.AuthProvider ? options.AuthProvider : undefined,
+        AuthProvider
     );
 
     if (options.expressConfig) {

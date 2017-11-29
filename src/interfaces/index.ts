@@ -1,19 +1,20 @@
 import { Connection, Repository, ConnectionOptions } from "typeorm";
 import * as express from "express";
-import { interfaces } from "inversify";
+import { interfaces as inversifyInterfaces } from "inversify";
 import { interfaces as expressInterfaces } from "inversify-express-utils";
+import * as interfaces from "../interfaces";
 
 export type SupportedDatabases = ConnectionOptions["type"];
 
 export interface AppOptions {
     database: SupportedDatabases;
-    containerModules?: interfaces.ContainerModule[];
+    containerModules?: inversifyInterfaces.ContainerModule[];
     dir?: string[];
-    container?: interfaces.Container;
+    container?: inversifyInterfaces.Container;
     customRouter?: express.Router;
     routingConfig?: expressInterfaces.RoutingConfig;
     customApp?: express.Application;
-    AuthProvider?: { new(): expressInterfaces.AuthProvider };
+    AccountRepository?: { new(): interfaces.AccountRepository };
     expressConfig?: (app: express.Application) => void;
 }
 
@@ -32,4 +33,10 @@ export interface RepositoryFactory {
         directoryName: string,
         getPath: (dirOrFile: string[]) => string
     ): Promise<Repository<T>[]>;
+}
+
+export interface AccountRepository {
+    getPrincipal(token: string): Promise<expressInterfaces.Principal>;
+    isResourceOwner(userDetails: any, resourceId: any): Promise<boolean>;
+    isInRole(userDetails: any, role: string): Promise<boolean>;
 }
