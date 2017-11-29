@@ -1,9 +1,8 @@
 <img width="400" src="./assets/logo.png" />
 
-## :gem: Zafiro is a lightweight web framework for Node.js apps powered by [InversifyJS](https://github.com/inversify/InversifyJS), [TypeORM](https://github.com/typeorm/typeorm) and [Express](https://github.com/expressjs/express) :rocket:
+## :gem: Zafiro is a strongly typed and lightweight web framework for Node.js apps powered by [TypeScript](), [InversifyJS](https://github.com/inversify/InversifyJS), [TypeORM](https://github.com/typeorm/typeorm) and [Express](https://github.com/expressjs/express) :rocket:
 
 [![Join the chat at https://gitter.im/inversify/InversifyJS](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/inversify/InversifyJS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Join the chat at https://gitter.im/remojansen/zafiro](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/remojansen/zafiro?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![npm version](https://badge.fury.io/js/zafiro.svg)](http://badge.fury.io/js/zafiro)
 [![Build Status](https://travis-ci.org/remojansen/zafiro.svg?branch=master)](https://travis-ci.org/remojansen/zafiro)
 [![Build status](https://ci.appveyor.com/api/projects/status/5kbh6wgi9rg7v6pr?svg=true)](https://ci.appveyor.com/project/remojansen/zafiro)
@@ -166,4 +165,4 @@ The Controllers API in Zafiro is powered by [inversify-express-utils](https://gi
 
 ## Example Application
 
-An example application is available at [inversify-realworld-example](https://github.com/remojansen/inversify-realworld-example).
+An example application is available at [zafiro-realworld-example](https://github.com/remojansen/zafiro-realworld-example).
