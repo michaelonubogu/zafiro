@@ -4,8 +4,10 @@ import { isAuthenticated } from "./auth/is_authenticated";
 import { AccountRepository, Logger } from "./interfaces";
 import { makeMiddleware } from "./middleware/make_middleware";
 import { isInRoleMiddlewareCb, isAuthenticatedMiddlewareCb } from "./auth/middleware_utils";
+import { ZAFIRO_TYPE } from "./constants/types";
 
 export {
+    ZAFIRO_TYPE,
     createApp,
     principalFactory,
     isAuthenticated,

@@ -1,13 +1,13 @@
 import * as express from "express";
 import { inject, injectable } from "inversify";
 import { BaseMiddleware } from "inversify-express-utils";
-import { TYPE } from "../constants/types";
+import { ZAFIRO_TYPE } from "../constants/types";
 import { Logger, MakeMiddlewareCallBack } from "../interfaces";
 
 export const makeMiddleware = (cb: MakeMiddlewareCallBack) => {
 
     class CustomMiddleware extends BaseMiddleware {
-        @inject(TYPE.Logger) private readonly _logger: Logger;
+        @inject(ZAFIRO_TYPE.Logger) private readonly _logger: Logger;
         public handler(
             req: express.Request,
             res: express.Response,

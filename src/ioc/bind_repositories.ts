@@ -2,7 +2,7 @@ import chalk from "chalk";
 import { Repository } from "typeorm";
 import { interfaces as inversifyInterfaces } from "inversify";
 import * as interfaces from "../interfaces";
-import { TYPE } from "../constants/types";
+import { ZAFIRO_TYPE } from "../constants/types";
 import readdirContents from "../fs/readdir_contents";
 
 export default async function bindRepositories(
@@ -12,7 +12,7 @@ export default async function bindRepositories(
     getPath: (dirOrFile: string[]) => string
 ) {
 
-    const factory = container.get<interfaces.RepositoryFactory>(TYPE.RepositoryFactory);
+    const factory = container.get<interfaces.RepositoryFactory>(ZAFIRO_TYPE.RepositoryFactory);
     const entities = await readdirContents(directoryName, getPath);
     const entityTypes = entities.map(e => Symbol.for(`Repository<${e.name}>`));
 

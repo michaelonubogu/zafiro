@@ -1,7 +1,5 @@
 import * as express from "express";
-import { inject, injectable } from "inversify";
 import { BaseMiddleware, interfaces } from "inversify-express-utils";
-import { TYPE } from "../constants/types";
 import { Logger, MakeMiddlewareCallBack } from "../interfaces";
 
 export const forbidden = (res: express.Response) => {

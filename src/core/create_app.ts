@@ -6,7 +6,7 @@ import { coreBindings }  from "../config/ioc_config";
 import bindControllers from "../ioc/bind_controllers";
 import bindRepositories from "../ioc/bind_repositories";
 import * as interfaces from "../interfaces";
-import { TYPE } from "../constants/types";
+import { ZAFIRO_TYPE } from "../constants/types";
 import { AuthProvider } from "../auth/auth_provider";
 import { principalFactory } from "../auth/principal_factory";
 
@@ -47,7 +47,7 @@ export default async function createApp(
     );
 
     if (options.AccountRepository) {
-        container.bind<interfaces.AccountRepository>(TYPE.AccountRepository)
+        container.bind<interfaces.AccountRepository>(ZAFIRO_TYPE.AccountRepository)
                  .to(options.AccountRepository);
     } else {
 
@@ -57,7 +57,7 @@ export default async function createApp(
             isInRole: (userDetails: any, role: string) => Promise.resolve(false)
         };
 
-        container.bind<interfaces.AccountRepository>(TYPE.AccountRepository)
+        container.bind<interfaces.AccountRepository>(ZAFIRO_TYPE.AccountRepository)
                 .toConstantValue(defaultAccountRepository);
     }
 

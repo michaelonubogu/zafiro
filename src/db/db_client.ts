@@ -1,7 +1,6 @@
 import { createConnection, Connection } from "typeorm";
 import { injectable, inject } from "inversify";
 import chalk from "chalk";
-import { TYPE } from "../constants/types";
 import * as interfaces from "../interfaces";
 import readdir from "../fs/readdir";
 
