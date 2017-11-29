@@ -25,16 +25,16 @@ import "reflect-metadata";
 import { createApp } from "zafiro";
 import { appBindings } from "./config/ioc_config";
 import { expressConfig } from "./config/express_config";
-import { AccountRepository } from "./repositories/account_repository";
+import { CustomAccountRepository } from "./repositories/account_repository";
 
 (async () => {
 
     try {
         const app = await createApp({
             database: "postgres",
-            containerModules: [bindings],
-            AccountRepository: CustomAccountRepository,
-            expressConfig: expressConfig
+            containerModules: [appBindings],
+            expressConfig: expressConfig,
+            AccountRepository: CustomAccountRepository
         });
 
         app.listen(
