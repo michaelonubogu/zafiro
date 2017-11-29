@@ -14,7 +14,7 @@
 
 :warning: :construction: This library is under construction :construction: :warning:
 
-## The basics
+## The Basics
 
 Zafiro exposes a function named `createApp` that allows you to bootstrap an Express application in just a few minutes.
 
@@ -63,7 +63,7 @@ The `createApp` function takes a configuration object that can be used to config
 - The `AccountRepository` [Optional] property allows you to provide a custom `AccountRepository`.
 - The `expressConfig` [Optional] property is a function `(app: express.Application) => void` that can be used to set some Express config.
 
-### Required environment variables
+### Required Environment Variables
 
 A Zafiro application expects the following environment variables to be available:
 
@@ -73,7 +73,7 @@ A Zafiro application expects the following environment variables to be available
 - The `DATABASE_PASSWORD` variable should contain the user password of your database.
 - The `DATABASE_DB`variable should contain the name of your database.
 
-### Required project folders
+### Required Project Folders
 
 A Zafiro application expects the following directory structure and convention:
 
@@ -163,3 +163,7 @@ class UserPreferencesController extends BaseHttpController {
 ```
 
 The Controllers API in Zafiro is powered by [inversify-express-utils](https://github.com/inversify/inversify-express-utils).
+
+## Example Application
+
+An example application is available at [inversify-realworld-example](https://github.com/remojansen/inversify-realworld-example).
